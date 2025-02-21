@@ -18,13 +18,29 @@ namespace Task5
         {
             while (true)
             {
+                Console.WriteLine("Меню:");
+
                 Console.WriteLine("1. Прочитать конфигурацию");
-                Console.WriteLine("2. Вывести конфигурацию");
+
+                if (_configuration != null && _configuration.Count > 0)
+                {
+                    Console.WriteLine("2. Вывести конфигурацию");
+                }
+
                 Console.WriteLine("3. Прочитать файл с данными");
-                Console.WriteLine("4. Вывести строки данных (с N до M)");
-                Console.WriteLine("5. Интерпретировать данные");
-                Console.WriteLine("6. Вывести полезные данные");
-                Console.WriteLine("7. Экспортировать данные в Excel");
+
+                if (_csvFiles != null && _csvFiles.Count > 0)
+                {
+                    Console.WriteLine("4. Вывести строки данных (с N до M)");
+                }
+
+                if (_rawData != null && _rawData.Rows.Count > 0)
+                {
+                    Console.WriteLine("5. Интерпретировать данные");
+                    Console.WriteLine("6. Вывести полезные данные");
+                    Console.WriteLine("7. Экспортировать данные в Excel");
+                }
+
                 Console.WriteLine("0. Выход");
                 var choice = Console.ReadLine();
 
