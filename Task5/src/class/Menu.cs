@@ -23,6 +23,8 @@ namespace Task5
                 Console.WriteLine("3. Прочитать файл с данными");
                 Console.WriteLine("4. Вывести строки данных (с N до M)");
                 Console.WriteLine("5. Интерпретировать данные");
+                Console.WriteLine("6. Вывести полезные данные");
+                Console.WriteLine("7. Экспортировать данные в Excel");
                 Console.WriteLine("0. Выход");
                 var choice = Console.ReadLine();
 
@@ -42,6 +44,12 @@ namespace Task5
                         break;
                     case "5":
                         InterpretData();
+                        break;
+                    case "6":
+                        PrintInterpretedData();
+                        break;
+                    case "7":
+                        ExportToExcel();
                         break;
                     case "0":
                         return;
@@ -195,6 +203,52 @@ namespace Task5
             _interpretedData = interpreter.InterpretData(_rawData);
             Console.WriteLine("Данные успешно интерпретированы.");
             Console.WriteLine($"Интерпретировано строк: {_interpretedData.Rows.Count}");
+        }
+        private void PrintInterpretedData()
+        {
+            if (_interpretedData == null || _interpretedData.Rows.Count == 0)
+            {
+                Console.WriteLine("Нет интерпретированных данных для отображения.");
+                return;
+            }
+
+            foreach (DataRow row in _interpretedData.Rows)
+            {
+                Console.WriteLine(string.Join(", ", row.ItemArray));
+            }
+            Console.WriteLine("Интерпретированные данные:");
+            foreach (DataRow row in _interpretedData.Rows)
+            {
+                string time = row["Time"].ToString();
+                string deviceId = row["DeviceID"].ToString();
+                string timeValue = row["Время"].ToString();
+
+                Console.WriteLine($"Time: {time}, DeviceID: {deviceId}, Время: {timeValue}");
+            }
+        }
+        private void ExportToExcel()
+        {
+            if (_interpretedData == null || _interpretedData.Rows.Count == 0)
+            {
+                Console.WriteLine("Нет интерпретированных данных для экспорта.");
+                return;
+            }
+
+            var projectDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+            var exportDirectory = Path.Combine(projectDirectory, "ExcelExport");
+
+            if (!Directory.Exists(exportDirectory))
+            {
+                Directory.CreateDirectory(exportDirectory);
+            }
+
+            Console.WriteLine("Введите название файла (без расширения):");
+            var fileName = Console.ReadLine();
+            var filePath = Path.Combine(exportDirectory, $"{fileName}.xlsx");
+
+            var exporter = new ExcelExporter();
+            exporter.ExportDataTableToExcel(_interpretedData, filePath);
+            Console.WriteLine($"Данные успешно экспортированы в файл: {filePath}");
         }
     }
 }

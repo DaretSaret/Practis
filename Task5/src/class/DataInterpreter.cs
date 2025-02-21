@@ -18,8 +18,9 @@ namespace Task5
         public DataTable InterpretData(DataTable rawData)
         {
             var interpretedData = new DataTable();
-            interpretedData.Columns.Add("Time", typeof(double));
+            interpretedData.Columns.Add("Time", typeof(string));
             interpretedData.Columns.Add("DeviceID", typeof(string));
+            interpretedData.Columns.Add("Время", typeof(string)); 
 
             foreach (var device in _configuration.Values)
             {
@@ -36,13 +37,18 @@ namespace Task5
             {
                 var time = row[0].ToString();
                 var deviceId = row[1].ToString();
+                var timeValue = row[2].ToString();
+
+                Console.WriteLine($"Raw Data: Time = {time}, DeviceID = {deviceId}, Время = {timeValue}");
 
                 if (_configuration.ContainsKey(deviceId))
                 {
                     var deviceData = _configuration[deviceId];
                     var newRow = interpretedData.NewRow();
-                    newRow["Time"] = double.TryParse(time, out double timeValue) ? timeValue : 0; 
+
+                    newRow["Time"] = time;
                     newRow["DeviceID"] = deviceId;
+                    newRow["Время"] = timeValue;
 
                     foreach (var dataItem in deviceData.Data)
                     {
