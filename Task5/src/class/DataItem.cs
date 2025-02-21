@@ -26,6 +26,5 @@ namespace Task5
 
         [JsonPropertyName("offset")]
         public double? Offset { get; set; }
-
     }
 }

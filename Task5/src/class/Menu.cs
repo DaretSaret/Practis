@@ -11,6 +11,7 @@ namespace Task5
     {
         private Dictionary<string, DeviceData> _configuration;
         private List<string> _csvFiles;
+        private DataTable _rawData;
         private DataTable _interpretedData;
 
         public void ShowMenu()
@@ -21,6 +22,7 @@ namespace Task5
                 Console.WriteLine("2. Вывести конфигурацию");
                 Console.WriteLine("3. Прочитать файл с данными");
                 Console.WriteLine("4. Вывести строки данных (с N до M)");
+                Console.WriteLine("5. Интерпретировать данные");
                 Console.WriteLine("0. Выход");
                 var choice = Console.ReadLine();
 
@@ -37,6 +39,9 @@ namespace Task5
                         break;
                     case "4":
                         PrintDataLines();
+                        break;
+                    case "5":
+                        InterpretData();
                         break;
                     case "0":
                         return;
@@ -63,6 +68,7 @@ namespace Task5
                 var str = streamReader.ReadToEnd();
                 _configuration = JsonSerializer.Deserialize<Dictionary<string, DeviceData>>(str);
                 Console.WriteLine($"Файл конфигурации успешно загружен: {configFilePath}");
+                Console.WriteLine($"Загружено устройств: {_configuration.Count}");
             }
         }
 
@@ -101,8 +107,9 @@ namespace Task5
             if (fileIndex >= 0 && fileIndex < _csvFiles.Count)
             {
                 var csvFilePath = _csvFiles[fileIndex];
-                _interpretedData = ReadCsvData(csvFilePath);
+                _rawData = ReadCsvData(csvFilePath);
                 Console.WriteLine($"Данные успешно прочитаны из файла: {csvFilePath}");
+                Console.WriteLine($"Прочитано строк: {_rawData.Rows.Count}");
             }
             else
             {
@@ -119,7 +126,7 @@ namespace Task5
                 var headerLine = reader.ReadLine();
                 if (headerLine != null)
                 {
-                    var headers = headerLine.Split('\t');
+                    var headers = headerLine.Split(';');
                     foreach (var header in headers)
                     {
                         dataTable.Columns.Add(header);
@@ -131,7 +138,7 @@ namespace Task5
                     var line = reader.ReadLine();
                     if (line != null)
                     {
-                        var values = line.Split('\t');
+                        var values = line.Split(';');
                         dataTable.Rows.Add(values);
                     }
                 }
@@ -139,9 +146,10 @@ namespace Task5
 
             return dataTable;
         }
+
         private void PrintDataLines()
         {
-            if (_interpretedData == null || _interpretedData.Rows.Count == 0)
+            if (_rawData == null || _rawData.Rows.Count == 0)
             {
                 Console.WriteLine("Нет данных для отображения.");
                 return;
@@ -156,7 +164,7 @@ namespace Task5
                 return;
             }
 
-            if (n < 0 || m >= _interpretedData.Rows.Count || n > m)
+            if (n < 0 || m >= _rawData.Rows.Count || n > m)
             {
                 Console.WriteLine("Неверный диапазон. Убедитесь, что N и M находятся в пределах существующих строк.");
                 return;
@@ -164,9 +172,29 @@ namespace Task5
 
             for (int i = n; i <= m; i++)
             {
-                var row = _interpretedData.Rows[i];
+                var row = _rawData.Rows[i];
                 Console.WriteLine(string.Join(", ", row.ItemArray));
             }
+        }
+
+        private void InterpretData()
+        {
+            if (_rawData == null || _rawData.Rows.Count == 0)
+            {
+                Console.WriteLine("Нет данных для интерпретации.");
+                return;
+            }
+
+            if (_configuration == null || _configuration.Count == 0)
+            {
+                Console.WriteLine("Конфигурация не загружена.");
+                return;
+            }
+
+            var interpreter = new DataInterpreter(_configuration);
+            _interpretedData = interpreter.InterpretData(_rawData);
+            Console.WriteLine("Данные успешно интерпретированы.");
+            Console.WriteLine($"Интерпретировано строк: {_interpretedData.Rows.Count}");
         }
     }
 }
