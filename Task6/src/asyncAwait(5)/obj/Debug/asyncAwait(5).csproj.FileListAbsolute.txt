@@ -1,0 +1,7 @@
+C:\Users\denyc\source\repos\Practise\Task6\src\asyncAwait(5)\bin\Debug\asyncAwait(5).exe.config
+C:\Users\denyc\source\repos\Practise\Task6\src\asyncAwait(5)\bin\Debug\asyncAwait(5).exe
+C:\Users\denyc\source\repos\Practise\Task6\src\asyncAwait(5)\bin\Debug\asyncAwait(5).pdb
+C:\Users\denyc\source\repos\Practise\Task6\src\asyncAwait(5)\obj\Debug\asyncAwait(5).csproj.AssemblyReference.cache
+C:\Users\denyc\source\repos\Practise\Task6\src\asyncAwait(5)\obj\Debug\asyncAwait(5).csproj.CoreCompileInputs.cache
+C:\Users\denyc\source\repos\Practise\Task6\src\asyncAwait(5)\obj\Debug\asyncAwait(5).exe
+C:\Users\denyc\source\repos\Practise\Task6\src\asyncAwait(5)\obj\Debug\asyncAwait(5).pdb
