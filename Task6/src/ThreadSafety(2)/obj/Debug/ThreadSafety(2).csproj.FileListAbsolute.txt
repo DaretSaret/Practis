@@ -1,0 +1,7 @@
+C:\Users\denyc\source\repos\Practise\Task6\src\ThreadSafety(2)\bin\Debug\ThreadSafety(2).exe.config
+C:\Users\denyc\source\repos\Practise\Task6\src\ThreadSafety(2)\bin\Debug\ThreadSafety(2).exe
+C:\Users\denyc\source\repos\Practise\Task6\src\ThreadSafety(2)\bin\Debug\ThreadSafety(2).pdb
+C:\Users\denyc\source\repos\Practise\Task6\src\ThreadSafety(2)\obj\Debug\ThreadSafety(2).csproj.AssemblyReference.cache
+C:\Users\denyc\source\repos\Practise\Task6\src\ThreadSafety(2)\obj\Debug\ThreadSafety(2).csproj.CoreCompileInputs.cache
+C:\Users\denyc\source\repos\Practise\Task6\src\ThreadSafety(2)\obj\Debug\ThreadSafety(2).exe
+C:\Users\denyc\source\repos\Practise\Task6\src\ThreadSafety(2)\obj\Debug\ThreadSafety(2).pdb

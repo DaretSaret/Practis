@@ -1,0 +1,7 @@
+C:\Users\denyc\source\repos\Practise\Task6\src\Threat(1)\bin\Debug\Task6.exe.config
+C:\Users\denyc\source\repos\Practise\Task6\src\Threat(1)\bin\Debug\Task6.exe
+C:\Users\denyc\source\repos\Practise\Task6\src\Threat(1)\bin\Debug\Task6.pdb
+C:\Users\denyc\source\repos\Practise\Task6\src\Threat(1)\obj\Debug\Tread(1).csproj.AssemblyReference.cache
+C:\Users\denyc\source\repos\Practise\Task6\src\Threat(1)\obj\Debug\Tread(1).csproj.CoreCompileInputs.cache
+C:\Users\denyc\source\repos\Practise\Task6\src\Threat(1)\obj\Debug\Task6.exe
+C:\Users\denyc\source\repos\Practise\Task6\src\Threat(1)\obj\Debug\Task6.pdb

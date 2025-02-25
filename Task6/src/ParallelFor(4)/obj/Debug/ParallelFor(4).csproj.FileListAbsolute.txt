@@ -1,0 +1,7 @@
+C:\Users\denyc\source\repos\Practise\Task6\src\ParallelFor(4)\bin\Debug\ParallelFor(4).exe.config
+C:\Users\denyc\source\repos\Practise\Task6\src\ParallelFor(4)\bin\Debug\ParallelFor(4).exe
+C:\Users\denyc\source\repos\Practise\Task6\src\ParallelFor(4)\bin\Debug\ParallelFor(4).pdb
+C:\Users\denyc\source\repos\Practise\Task6\src\ParallelFor(4)\obj\Debug\ParallelFor(4).csproj.AssemblyReference.cache
+C:\Users\denyc\source\repos\Practise\Task6\src\ParallelFor(4)\obj\Debug\ParallelFor(4).csproj.CoreCompileInputs.cache
+C:\Users\denyc\source\repos\Practise\Task6\src\ParallelFor(4)\obj\Debug\ParallelFor(4).exe
+C:\Users\denyc\source\repos\Practise\Task6\src\ParallelFor(4)\obj\Debug\ParallelFor(4).pdb
