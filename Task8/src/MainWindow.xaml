@@ -1,0 +1,78 @@
+﻿<Window x:Class="Task8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task8"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical">
+            <ComboBox Name="colorComboBox" SelectionChanged="ComboBox">
+                <ComboBoxItem Content="Красный"/>
+                <ComboBoxItem Content="Зеленый"/>
+                <ComboBoxItem Content="Синий"/>
+            </ComboBox>
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <Button Content="Кнопка 1" Click="ButtonClick" ToolTip="Кнопка 1"/>
+                <Button Content="Кнопка 2" Click="ButtonClick" ToolTip="Кнопка 2"/>
+                <Button Content="Кнопка 3" Click="ButtonClick" ToolTip="Кнопка 3"/>
+            </StackPanel>
+        </StackPanel>
+
+        <ProgressBar Grid.Column="0" Grid.Row="1" Name="progressBar" Height="20" Value="50" Visibility="Visible"/>
+
+        <DockPanel Grid.Column="1" Grid.Row="0">
+            <DatePicker Name="datePicker" SelectedDateChanged="DatePicker" DockPanel.Dock="Top"/>
+            <TextBox Name="mainTextBox" Height="30" Margin="5"/>
+            <Button Content="Очистить" Click="ClearButton" DockPanel.Dock="Bottom"/>
+        </DockPanel>
+
+        <Slider Grid.Column="1" Grid.Row="1" Name="fontSizeSlider" Minimum="8" Maximum="32" Value="12" ValueChanged="FontSizeSlider"/>
+
+        <WrapPanel Grid.Column="2" Grid.Row="0">
+            <CheckBox Content="Активировать" Name="enableCheckBox" Checked="CheckBoxChecked" Unchecked="CheckBoxUnchecked"/>
+            <GroupBox Header="Группа 1" Margin="5">
+                <StackPanel>
+                    <RadioButton Content="Опция 1" GroupName="Group1"/>
+                    <RadioButton Content="Опция 2" GroupName="Group1"/>
+                </StackPanel>
+            </GroupBox>
+            <WrapPanel Orientation="Vertical" Margin="5">
+                <RadioButton Content="Опция 3" GroupName="Group2"/>
+                <RadioButton Content="Опция 4" GroupName="Group2"/>
+                <RadioButton Content="Опция 5" GroupName="Group2"/>
+            </WrapPanel>
+        </WrapPanel>
+
+        <Canvas Grid.Column="1" Grid.Row="1" Background="LightGray">
+            <Ellipse Name="draggableEllipse" Width="50" Height="50" Fill="Blue"
+                     MouseLeftButtonDown="draggableEllipseDown"
+                     MouseLeftButtonUp="draggableEllipseUp"
+                     MouseMove="draggableEllipseMove"/>
+        </Canvas>
+
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <ListBox Name="itemsListBox" SelectionChanged="ListBox">
+                <ListBoxItem Content="Элемент 1"/>
+                <ListBoxItem Content="Элемент 2"/>
+                <ListBoxItem Content="Элемент 3"/>
+                <ListBoxItem Content="Элемент 4"/>
+                <ListBoxItem Content="Элемент 5"/>
+            </ListBox>
+            <Expander Header="Дополнительно" Margin="5">
+                <TextBox Text="Текст..." Height="60"/>
+            </Expander>
+        </StackPanel>
+    </Grid>
+</Window>
